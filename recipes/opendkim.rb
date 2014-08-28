@@ -9,7 +9,7 @@
 
 package 'opendkim'
 
-service "opendkim" do
+service 'opendkim' do
   supports restart: true, status: true, reload: true
   action [:enable]
 end
@@ -35,7 +35,7 @@ template '/etc/opendkim.conf' do
   owner 'opendkim'
   group 'opendkim'
   mode 0644
-  notifies :restart, "service[opendkim]"
+  notifies :restart, 'service[opendkim]'
 end
 
 template '/etc/opendkim/KeyTable' do
@@ -43,7 +43,7 @@ template '/etc/opendkim/KeyTable' do
   owner 'opendkim'
   group 'opendkim'
   mode 0640
-  notifies :reload, "service[opendkim]"
+  notifies :reload, 'service[opendkim]'
 end
 
 template '/etc/opendkim/SigningTable' do
@@ -51,7 +51,7 @@ template '/etc/opendkim/SigningTable' do
   owner 'opendkim'
   group 'opendkim'
   mode 0640
-  notifies :reload, "service[opendkim]"
+  notifies :reload, 'service[opendkim]'
 end
 
 template '/etc/opendkim/TrustedHosts' do
@@ -59,5 +59,5 @@ template '/etc/opendkim/TrustedHosts' do
   owner 'opendkim'
   group 'opendkim'
   mode 0640
-  notifies :reload, "service[opendkim]"
+  notifies :reload, 'service[opendkim]'
 end

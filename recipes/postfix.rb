@@ -9,7 +9,7 @@
 
 package 'postfix'
 
-service "postfix" do
+service 'postfix' do
   supports restart: true, status: true, reload: true
   action [:enable]
 end
@@ -24,5 +24,5 @@ end
 template '/etc/postfix/main.cf' do
   source 'main.cf.erb'
   mode 0644
-  notifies :restart, "service[postfix]"
+  notifies :restart, 'service[postfix]'
 end
