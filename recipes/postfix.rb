@@ -14,7 +14,7 @@ service "postfix" do
   action [:enable]
 end
 
-directory node[:postfix][:virtual_mailbox_base] do
+directory node[:email][:postfix][:virtual_mailbox_base] do
   owner 'postfix'
   group 'postfix'
   mode  0755

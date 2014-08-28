@@ -28,9 +28,9 @@ describe 'email::postfix' do
         .with_content('smtpd_sender_restrictions = reject_unknown_sender_domain') }
   end
 
-  context 'with empty array in node[:postfix]' do
+  context 'with empty array in node[:email][:postfix]' do
     subject do ChefSpec::Runner.new do |node|
-        node.set[:email][:emptykey] = []
+        node.set[:email][:postfix][:emptykey] = []
       end.converge(described_recipe)
     end
 
