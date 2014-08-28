@@ -5,9 +5,7 @@ Single domain case is also available.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### email::default
 <table>
   <tr>
