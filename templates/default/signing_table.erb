@@ -1,0 +1,3 @@
+<% node['email']['domains'].each do |domain| %>
+<%= domain %> mail._domainkey.<%= domain %>
+<% end %>

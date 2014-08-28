@@ -1,0 +1,17 @@
+DEPENDENCIES
+  apt
+  chef-solo-search
+    git: https://github.com/edelight/chef-solo-search.git
+    revision: 848fad1461c78fd502975f1df2e14eed12610635
+  email
+    path: .
+    metadata: true
+  yum
+
+GRAPH
+  apt (2.5.3)
+  chef-solo-search (0.5.1)
+  email (0.0.1)
+    apt (>= 0.0.0)
+    yum (>= 0.0.0)
+  yum (3.2.4)

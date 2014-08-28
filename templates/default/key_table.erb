@@ -1,0 +1,3 @@
+<% node['email']['domains'].each do |domain| %>
+mail._domainkey.<%= domain %> <%= domain%>:mail:/etc/opendkim/keys/<%= domain %>.key
+<% end %>
