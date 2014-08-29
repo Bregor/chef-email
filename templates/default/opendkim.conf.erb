@@ -5,8 +5,8 @@
 <% node[:email][:opendkim].each do |k,v| %>
 <% k = k.split("_").each {|s| s.capitalize! }.join("") %>
 <% if Array === v %>
-<%= "#{k} = #{v.join(' ')}" unless v.empty? %>
+<%= "#{k} #{v.join(' ')}" unless v.empty? %>
 <% else %>
-<%= "#{k} = #{v}" %>
+<%= "#{k} #{v}" %>
 <% end %>
 <% end %>
