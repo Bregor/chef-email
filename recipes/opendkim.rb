@@ -26,7 +26,7 @@ node[:email][:domains].each do |domain|
     owner 'opendkim'
     group 'opendkim'
     mode  0600
-    content(Chef::EncryptedDataBagItem.load(node[:email][:databag], domain)['private_key'])
+    content(Chef::EncryptedDataBagItem.load(node[:email][:databag], domain.gsub(/\./, '_'))['private_key'])
   end
 end
 

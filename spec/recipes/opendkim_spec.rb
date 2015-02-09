@@ -4,7 +4,7 @@ describe 'email::opendkim' do
   subject { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   before do
-    allow(Chef::EncryptedDataBagItem).to receive(:load).with('domainkeys', 'example.com')
+    allow(Chef::EncryptedDataBagItem).to receive(:load).with('domainkeys', 'example_com')
       .and_return({'private_key' => 'some_encrypted_shit'})
   end
 
