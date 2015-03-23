@@ -19,6 +19,7 @@ default[:email][:postfix][:relay_transport]         = 'smtp'
 default[:email][:postfix][:virtual_mailbox_domains] = node[:email][:virtual_mailbox_domains]
 default[:email][:postfix][:relay_domains]           = node[:email][:relay_domains]
 default[:email][:postfix][:virtual_mailbox_base]    = '/var/mail/vhosts'
+default[:email][:postfix][:message_size_limit]      = 20480000
 default[:email][:postfix][:virtual_minimum_uid]     = 100
 default[:email][:postfix][:virtual_uid_maps]        = 'static:5000'
 default[:email][:postfix][:virtual_gid_maps]        = 'static:5000'
