@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 describe 'email::postfix' do
-  subject { ChefSpec::Runner.new.converge(described_recipe) }
+  subject { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   it { is_expected.to install_package 'postfix' }
   it { is_expected.to enable_service 'postfix' }
@@ -10,7 +10,7 @@ describe 'email::postfix' do
       .with_content('virtual_mailbox_domains = example.com') }
 
   context 'without DKIM' do
-    subject do ChefSpec::Runner.new do |node|
+    subject do ChefSpec::SoloRunner.new do |node|
         node.set[:email][:dkim] = false
       end.converge(described_recipe)
     end
@@ -19,7 +19,7 @@ describe 'email::postfix' do
   end
 
   context 'without sender restrictions' do
-    subject do ChefSpec::Runner.new do |node|
+    subject do ChefSpec::SoloRunner.new do |node|
         node.set[:email][:restricted] = false
       end.converge(described_recipe)
     end
@@ -29,7 +29,7 @@ describe 'email::postfix' do
   end
 
   context 'with empty array in node[:email][:postfix]' do
-    subject do ChefSpec::Runner.new do |node|
+    subject do ChefSpec::SoloRunner.new do |node|
         node.set[:email][:postfix][:emptykey] = []
       end.converge(described_recipe)
     end

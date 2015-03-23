@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 describe 'email::opendkim' do
-  subject { ChefSpec::Runner.new.converge(described_recipe) }
+  subject { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   before do
     allow(Chef::EncryptedDataBagItem).to receive(:load).with('domainkeys', 'example.com')

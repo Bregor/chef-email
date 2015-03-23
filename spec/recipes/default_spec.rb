@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 describe 'email::default' do
-  subject { ChefSpec::Runner.new.converge(described_recipe) }
+  subject { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   before do
     allow(Chef::EncryptedDataBagItem).to receive(:load).with('domainkeys', 'example.com')
@@ -12,7 +12,7 @@ describe 'email::default' do
   it { is_expected.to include_recipe 'email::postfix' }
 
   context 'without DKIM' do
-    subject do ChefSpec::Runner.new do |node|
+    subject do ChefSpec::SoloRunner.new do |node|
         node.set[:email][:dkim] = false
       end.converge(described_recipe)
     end
