@@ -33,10 +33,17 @@ Attributes
     <td><tt>'domainkeys'</tt></td>
   </tr>
   <tr>
-    <td><tt>['email']['domains']</tt></td>
+    <td><tt>['email']['relay_domains']</tt></td>
     <td>Array</td>
-    <td>List of maintained domains</td>
-    <td><tt>['example.com']</tt></td>
+    <td>List of relay-only domains</td>
+    <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+  <tr>
+    <td><tt>['email'][virtual_mailbox_domains']</tt></td>
+    <td>Array</td>
+    <td>List of local domains</td>
+    <td><tt>[]</tt></td>
   </tr>
   <tr>
     <td><tt>['email']['trusted_hosts']</tt></td>
@@ -60,11 +67,8 @@ Then just include `email` and list of domains to your node:
   "name":"my_node",
   "normal": {
     "email": {
-      "domains": [
-        "mydomain.com",
-        "hisdomain.com",
-        "herdomain.com"
-      ]
+      "virtual_mailbox_domains": ["mydomain.com"],
+	  "relay_domains": ["hisdomain.com","herdomain.com"]
     }
   },
   "run_list": [
@@ -88,7 +92,7 @@ Contributing
 # Sponsor
 
 <p align="center"><a href="https://evilmartians.com/?utm_source=chef-email">
-<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54"></a></p> 
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54"></a></p>
 
 License and Authors
 -------------------
