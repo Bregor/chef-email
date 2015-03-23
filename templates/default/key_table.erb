@@ -1,3 +1,3 @@
-<% node[:email][:domains].each do |domain| %>
+<% (node[:email][:relay_domains] + node[:email][:virtual_mailbox_domains]).compact.uniq.each do |domain| %>
 <%= node[:email][:opendkim][:selector]%>._domainkey.<%= domain %> <%= domain%>:<%= node[:email][:opendkim][:selector]%>:/etc/opendkim/keys/<%= domain %>.key
 <% end %>

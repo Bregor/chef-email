@@ -1,11 +1,14 @@
 require_relative '../spec_helper'
 
 describe 'email::opendkim' do
-  subject { ChefSpec::SoloRunner.new.converge(described_recipe) }
+  subject do ChefSpec::SoloRunner.new do |node|
+               node.set[:email][:virtual_mailbox_domains] = ['example.com']
+             end.converge(described_recipe)
+  end
 
   before do
     allow(Chef::EncryptedDataBagItem).to receive(:load).with('domainkeys', 'example.com')
-      .and_return({'private_key' => 'some_encrypted_shit'})
+                                          .and_return({'private_key' => 'some_encrypted_shit'})
   end
 
   it { is_expected.to install_package 'opendkim' }
@@ -14,8 +17,8 @@ describe 'email::opendkim' do
   it { is_expected.to create_template('/etc/opendkim.conf') }
   it { is_expected.to render_file('/etc/opendkim/keys/example.com.key').with_content('some_encrypted_shit') }
   it { is_expected.to render_file('/etc/opendkim/KeyTable')
-      .with_content('mail._domainkey.example.com example.com:mail:/etc/opendkim/keys/example.com.key') }
+                       .with_content('mail._domainkey.example.com example.com:mail:/etc/opendkim/keys/example.com.key') }
   it { is_expected.to render_file('/etc/opendkim/SigningTable')
-      .with_content('example.com mail._domainkey.example.com') }
+                       .with_content('example.com mail._domainkey.example.com') }
   it { is_expected.to render_file('/etc/opendkim/TrustedHosts').with_content('127.0.0.0/8')}
 end

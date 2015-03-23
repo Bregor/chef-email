@@ -21,7 +21,7 @@ directory '/etc/opendkim/keys' do
   recursive true
 end
 
-node[:email][:domains].each do |domain|
+(node[:email][:relay_domains] + node[:email][:virtual_mailbox_domains]).compact.uniq.each do |domain|
   file "/etc/opendkim/keys/#{domain}.key" do
     owner 'opendkim'
     group 'opendkim'
