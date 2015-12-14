@@ -51,6 +51,24 @@ Attributes
     <td>List of trusted hosts for both Postfix and OpenDKIM</td>
     <td><tt>['127.0.0.0/8', '[::ffff:127.0.0.0]/104', '[::1]/128']</tt></td>
   </tr>
+  <tr>
+    <td><tt>['email']['sasl']</tt></td>
+    <td>Boolean</td>
+    <td>Condition for using Cyrus SASL (for relayhost with SMTP-auth e.g.)</td>
+    <td><tt>false</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['email']['sasl_auth_databag']</tt></td>
+    <td>String</td>
+    <td>Name of databag with SASL credentials. Items MUST be encrypted!</td>
+    <td><tt>sasl_secrets</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['email']['sasl_auth_file']</tt></td>
+    <td>String</td>
+    <td>Path to SASL auth file</td>
+    <td><tt>/etc/postfix/sasl_passwd</tt></td>
+  </tr>
 </table>
 
 Usage

@@ -26,3 +26,7 @@ template '/etc/postfix/main.cf' do
   mode 0644
   notifies :restart, 'service[postfix]'
 end
+
+if node[:email][:sasl]
+  include_recipe 'email::sasl'
+end

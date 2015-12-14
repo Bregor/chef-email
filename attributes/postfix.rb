@@ -33,3 +33,10 @@ if node[:email][:dkim]
   default[:email][:postfix][:smtpd_milters]     = 'inet:localhost:8891'
   default[:email][:postfix][:non_smtpd_milters] = 'inet:localhost:8891'
 end
+
+if node[:email][:sasl]
+  default[:email][:postfix][:smtp_sasl_auth_enable] = 'yes'
+  default[:email][:postfix][:smtp_sasl_password_maps] = 'hash:/etc/postfix/sasl_passwd'
+  default[:email][:postfix][:smtp_sasl_security_options] = 'noanonymous'
+  default[:email][:postfix][:smtp_use_tls] = 'yes'
+end
