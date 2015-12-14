@@ -3,6 +3,10 @@ email CHANGELOG
 
 This file is used to list changes made in each version of the email cookbook.
 
+0.0.3
+------
+* SASL compatibility to use with password-protected relayhosts (like Mandrillapp and so on). See README for details
+
 0.0.2
 ------
 * General: divide `email[:domains]` to `email[:relay_domains]` and `email[:virtual_mailbox_domains]`.
