@@ -7,8 +7,12 @@
 # MIT Licence
 #
 
-package 'libsasl2-modules'
-package 'cyrus-sasl-plain'
+case node.platform_family
+when 'debian'
+  package 'libsasl2-modules'
+when 'rhel'
+  package 'cyrus-sasl-plain'
+end
 
 sasl_keys = Chef::DataBag.load(node[:email][:sasl_auth_databag]).keys.map do |key|
   Chef::EncryptedDataBagItem.load(node[:email][:sasl_auth_databag], key)
