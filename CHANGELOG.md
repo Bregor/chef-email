@@ -3,6 +3,11 @@ email CHANGELOG
 
 This file is used to list changes made in each version of the email cookbook.
 
+0.0.4
+------
+Bug fix release.
+* SASL: proper support for both debian and rhel platforms
+
 0.0.3
 ------
 * SASL compatibility to use with password-protected relayhosts (like Mandrillapp and so on). See README for details
